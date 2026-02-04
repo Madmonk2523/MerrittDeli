@@ -43,10 +43,63 @@
             text-decoration: none;
         }
 
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
         nav ul {
             list-style: none;
             display: flex;
             gap: 2rem;
+        }
+
+        nav ul.mobile-nav {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+            flex-direction: column;
+            gap: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        nav ul.mobile-nav.active {
+            max-height: 300px;
+        }
+
+        nav ul.mobile-nav li {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav ul.mobile-nav a {
+            display: block;
+            padding: 1rem 2rem;
         }
 
         nav a {
@@ -68,17 +121,23 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(139, 0, 0, 0.7), rgba(220, 20, 60, 0.7)), 
+            background: linear-gradient(rgba(139, 0, 0, 0.75), rgba(220, 20, 60, 0.75)), 
                         url('wideStoreImage.webp') center/cover no-repeat;
             color: white;
             padding: 120px 2rem;
             text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-weight: 800;
         }
 
         .hero p {
@@ -90,20 +149,132 @@
         .cta-button {
             background: #FFD700;
             color: #8B0000;
-            padding: 12px 30px;
+            padding: 15px 40px;
             border: none;
             border-radius: 5px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
             text-decoration: none;
             display: inline-block;
+            margin: 0 10px;
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            background: #FFC700;
+        }
+
+        /* Storefront Section */
+        .storefront-section {
+            padding: 80px 2rem;
+            background: white;
+        }
+
+        .storefront-section h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            color: #8B0000;
+            font-weight: 700;
+        }
+
+        .storefront-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .storefront-image {
+            width: 100%;
+        }
+
+        .storefront-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .storefront-image img:hover {
+            transform: scale(1.03);
+        }
+
+        .storefront-content h3 {
+            font-size: 2rem;
+            color: #DC143C;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .storefront-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Experience Our Quality Section */
+        .quality-section {
+            padding: 80px 2rem;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+        }
+
+        .quality-section h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            color: #8B0000;
+            font-weight: 700;
+        }
+
+        .quality-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .quality-content {
+            order: 1;
+        }
+
+        .quality-content h3 {
+            font-size: 2rem;
+            color: #DC143C;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .quality-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .quality-image {
+            order: 2;
+        }
+
+        .quality-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .quality-image img:hover {
+            transform: scale(1.03);
         }
 
         /* Gallery Section */
@@ -308,6 +479,23 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul:not(.mobile-nav) {
+                display: none;
+            }
+
+            nav ul.mobile-nav {
+                display: flex;
+            }
+
+            .hero {
+                padding: 80px 2rem;
+                min-height: 400px;
+            }
+
             .hero h1 {
                 font-size: 2rem;
             }
@@ -316,9 +504,34 @@
                 font-size: 1rem;
             }
 
-            nav ul {
-                gap: 1rem;
-                font-size: 0.9rem;
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 0.95rem;
+                margin: 0 5px;
+            }
+
+            .storefront-container,
+            .quality-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .storefront-content h3,
+            .quality-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .storefront-content p,
+            .quality-content p {
+                font-size: 1rem;
+            }
+
+            .quality-content {
+                order: 2;
+            }
+
+            .quality-image {
+                order: 1;
             }
 
             .hours-container {
@@ -328,6 +541,39 @@
             .contact-info {
                 grid-template-columns: 1fr;
             }
+
+            .storefront-section h2,
+            .quality-section h2 {
+                font-size: 2rem;
+            }
+
+            .gallery-section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            nav .container {
+                padding: 0.8rem 1rem;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                margin: 5px 0;
+            }
         }
     </style>
 </head>
@@ -336,9 +582,23 @@
     <nav>
         <div class="container">
             <a href="#" class="logo">🍖 Merritt Deli</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="mobileNav" class="mobile-nav">
+                <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+                <li><a href="#storefront" onclick="toggleMenu()">Storefront</a></li>
+                <li><a href="#quality" onclick="toggleMenu()">Quality</a></li>
+                <li><a href="#hours" onclick="toggleMenu()">Hours</a></li>
+                <li><a href="#testimonials" onclick="toggleMenu()">Reviews</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            </ul>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#storefront">Storefront</a></li>
+                <li><a href="#quality">Quality</a></li>
                 <li><a href="#hours">Hours</a></li>
                 <li><a href="#testimonials">Reviews</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -352,17 +612,42 @@
             <h1>Merritt Deli</h1>
             <p>Premium Quality Food & Exceptional Service Since 1985</p>
             <a href="#contact" class="cta-button">Visit Us Today</a>
+            <a href="#storefront" class="cta-button">Learn More</a>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery-section" id="gallery">
+    <!-- Storefront Section -->
+    <section class="storefront-section" id="storefront">
+        <div class="container">
+            <h2>Welcome to Our Storefront</h2>
+            <div class="storefront-container">
+                <div class="storefront-image">
+                    <img src="storefront.webp" alt="Merritt Deli Storefront">
+                </div>
+                <div class="storefront-content">
+                    <h3>Visit Our Location</h3>
+                    <p>Step into Merritt Deli and experience the charm of a local favorite. Our welcoming storefront has been serving the Farmingdale community since 1985, providing fresh, high-quality food with outstanding customer service.</p>
+                    <p>Whether you're looking for a quick breakfast, a delicious lunch, or premium deli meats, our friendly staff is ready to serve you. We pride ourselves on quality ingredients and time-tested recipes passed down through generations.</p>
+                    <p><strong>Address:</strong> 307 Northwest Dr, Farmingdale, NY 11735</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Our Quality Section -->
+    <section class="quality-section" id="quality">
         <div class="container">
             <h2>Experience Our Quality</h2>
-            <div class="gallery">
-                <img src="storefront.webp" alt="Merritt Deli Storefront">
-                <img src="overTheCounter.webp" alt="Premium Deli Counter">
-                <img src="wideStoreImage.webp" alt="Merritt Deli Interior">
+            <div class="quality-container">
+                <div class="quality-content">
+                    <h3>Crafted with Care</h3>
+                    <p>At our premium deli counter, every product is carefully selected and prepared with meticulous attention to detail. Our experienced staff takes pride in providing you with the finest cuts of meat, freshly prepared sandwiches, and specialty items.</p>
+                    <p>From our signature rib eye steaks to hand-sliced deli meats, we ensure that each item meets our high standards of quality. We use only the freshest ingredients sourced from trusted suppliers.</p>
+                    <p>Our behind-the-counter team brings years of expertise to every transaction, whether you need a quarter pound of premium roast beef or a full catering order for your next event.</p>
+                </div>
+                <div class="quality-image">
+                    <img src="overTheCounter.webp" alt="Premium Deli Counter at Merritt Deli">
+                </div>
             </div>
         </div>
     </section>
@@ -445,5 +730,35 @@
         <p>&copy; 2026 Merritt Deli. All rights reserved.</p>
         <p>Quality Food • Exceptional Service • Since 1985</p>
     </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+
+        hamburger.addEventListener('click', toggleMenu);
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        }
+
+        // Close menu when a link is clicked
+        const navLinks = mobileNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
